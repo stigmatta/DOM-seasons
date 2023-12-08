@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="">
+        <style>
+            body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+            #seasons{
+                margin: 0 auto;
+                background-repeat: no-repeat;
+                background-size: cover;
+            }
+            table,
+            th,
+            td {
+                border: 1px solid black;
+            }
+
+            td, th {
+                font-size: 1.5em;
+                padding: 1em;
+            }
+            h1{
+                color:blue;
+                margin: 0 auto;
+                width: fit-content;
+            }
+            #week-days{
+                font-weight: bold;
+            }
+        </style>
+    </head>
+    <body>
+        <h1></h1>
+        <table id="seasons">
+            <tr id = "week-days">
+                <td>ПН</td>
+                <td>ВТ</td>
+                <td>СР</td>
+                <td>ЧТ</td>
+                <td>ПТ</td>
+                <td>СБ</td>
+                <td>ВС</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    <script>
+        let table = document.querySelector("table");
+        let elements = document.querySelectorAll("table tr:not(#week-days)");
+        let days31 = ["Январь","Март","Май","Июль","Август","Октябрь","Декабрь"];
+        let winter = ["Январь","Февраль","Декабрь"];
+        let autumn = ["Сентябрь","Октябрь","Ноябрь"];
+        let spring = ["Март","Апрель","Май"];
+        let summer = ["Июнь","Июль","Август"];
+        let choice = prompt("Выберите месяц (словами)");
+        let rows = document.querySelectorAll("table tr"); 
+        let month = document.querySelector("h1");
+        let weekDays = document.querySelector("#week-days");
+        month.textContent = choice;
+
+        if (winter.includes(choice)) {
+            table.style.background = "url('seasons/1.JPG')";
+            weekDays.style.color = "blue";
+            for(const elem of elements){
+                elem.style.color = "Red";
+            }
+        }
+        else if(summer.includes(choice)){
+            table.style.background= "url('seasons/2.JPG')";
+            weekDays.style.color = "Yellow";
+            for(const elem of elements){
+                elem.style.color = "White";
+            }
+        }
+        else if(autumn.includes(choice)){
+            table.style.background = "url('seasons/4.JPG')";
+            weekDays.style.color = "Yellow";
+            for(const elem of elements){
+                elem.style.color = "White";
+            }
+        }
+        else if(spring.includes(choice)){
+            table.style.background= "url('seasons/3.JPG')";
+            weekDays.style.color = "Yellow";
+            for(const elem of elements){
+                elem.style.color = "Yellow";
+            }
+        }
+        if (days31.includes(choice)) {
+            var count = 1;
+            for (let i = 1; i < rows.length; i++) {
+                for (let j = 0; j < rows[i].cells.length; j++) { 
+                    if (count > 31) 
+                        count = 1;
+                    rows[i].cells[j].textContent = count++;
+                }
+            }
+        }
+        else if(choice=="Февраль"){
+            var count = 1;
+            for (let i = 1; i < rows.length; i++) {
+                for (let j = 0; j < rows[i].cells.length; j++) { 
+                    if (count > 28) 
+                        count = 1;
+                    rows[i].cells[j].textContent = count++;
+                }
+            }
+        }
+        else{
+            var count = 1;
+            for (let i = 1; i < rows.length; i++) {
+                for (let j = 0; j < rows[i].cells.length; j++) { 
+                    if (count > 30) 
+                        count = 1;
+                    rows[i].cells[j].textContent = count++;
+                }
+            }
+        }
+
+    </script>
+    </body>
+</html>
